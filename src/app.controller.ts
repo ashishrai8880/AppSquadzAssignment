@@ -7,6 +7,7 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    // return this.appService.getHello();
+    return `Coming in registering user : with env : ${process.env.DB_URI}`;
   }
 }
