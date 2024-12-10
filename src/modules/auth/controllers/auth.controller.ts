@@ -1,17 +1,14 @@
 import { Controller, Post, Body, Ip } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { LoginEmployeeDto, RegisterEmployeeDto } from '../dto';
+import { AuthInterface } from '../interfaces/auth.interface';
 
 @Controller('/auth/employee')
-export class AuthController {
+export class AuthController implements AuthInterface {
   constructor(private readonly authService: AuthService) {}
 
   @Post('/signup')
   async registerEmployee(@Body() createAuthDto: RegisterEmployeeDto) {
-    console.log(
-      '🚀 ~ AuthController ~ registerEmployee ~ createAuthDto:',
-      createAuthDto,
-    );
     return await this.authService.registerEmployee(createAuthDto);
   }
 

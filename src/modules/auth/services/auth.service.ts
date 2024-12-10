@@ -17,7 +17,6 @@ export class AuthService {
   ) {}
 
   async registerEmployee(createAuthDto: RegisterEmployeeDto) {
-    // Check if mobile number already exists
     const exists = await this.authRepository.findByMobile(createAuthDto.mobile);
 
     if (exists) {
